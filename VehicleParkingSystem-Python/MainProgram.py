@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt,QTimer
 
 class MainScreen():
     def showSplashScreen(self):
-        self.pix=QPixmap("slash_img.jpg")
+        self.pix=QPixmap("VPMS.jpeg")
         self.splassh=QSplashScreen(self.pix,Qt.WindowStaysOnTopHint)
         self.splassh.show()
 
@@ -31,9 +31,9 @@ mainScreen.showSplashScreen()
 installWindow=InstallWindow()
 
 if os.path.exists("./config.json"):
-    QTimer.singleShot(3000,showLoginWindow)
+    QTimer.singleShot(1000,showLoginWindow)
 else:
-    QTimer.singleShot(3000,showSetupWindow)
+    QTimer.singleShot(1000,showSetupWindow)
 
 
 sys.exit(app.exec_())

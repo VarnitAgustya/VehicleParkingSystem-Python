@@ -1,4 +1,6 @@
-from PyQt5.QtWidgets import QWidget,QMainWindow,QPushButton,QLineEdit,QLabel,QVBoxLayout,QHBoxLayout,QFrame,QGridLayout,QComboBox,QTableWidget,QTableWidgetItem
+
+import sys
+from PyQt5.QtWidgets import QWidget,QMainWindow,QPushButton,QLineEdit,QLabel,QVBoxLayout,QHBoxLayout,QFrame,QGridLayout,QComboBox,QTableWidget,QTableWidgetItem,QApplication
 from DataBaseOperation import DBOperation
 from PyQt5.QtWidgets import QHeaderView,qApp
 import PyQt5.QtGui
@@ -9,9 +11,9 @@ class HomeScreen(QMainWindow):
         self.setWindowTitle("Home")
         self.dbOperation=DBOperation()
         widget=QWidget()
-        widget.setStyleSheet("background:#000")
-        layout_horizontal=QHBoxLayout()
-        menu_vertical_layout=QVBoxLayout()
+        widget.setStyleSheet("background:black")
+        layout_horizontal=QVBoxLayout()
+        menu_vertical_layout=QHBoxLayout()
 
         self.btn_home=QPushButton("Home")
         self.btn_add = QPushButton("Add Vehicle")
@@ -20,10 +22,10 @@ class HomeScreen(QMainWindow):
 
         menu_vertical_layout.setContentsMargins(0,0,0,0)
         menu_vertical_layout.setSpacing(0)
-        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:#1A3668;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
 
 
         self.btn_home.clicked.connect(self.showHome)
@@ -46,26 +48,26 @@ class HomeScreen(QMainWindow):
 
         parent_vertical=QVBoxLayout()
         parent_vertical.setContentsMargins(0,0,0,0)
-        self.vertical_1=QVBoxLayout()
+        self.vertical_1=QHBoxLayout()
         self.addHomePageData()
 
 
-        self.vertical_2=QVBoxLayout()
+        self.vertical_2=QHBoxLayout()
         self.vertical_2.setContentsMargins(0,0,0,0)
         self.addAddStudentPage()
 
-        self.vertical_3=QVBoxLayout()
+        self.vertical_3=QHBoxLayout()
         self.vertical_3.setContentsMargins(0,0,0,0)
         self.addManagePage()
 
-        self.vertical_4=QVBoxLayout()
+        self.vertical_4=QHBoxLayout()
         self.addHistoryPage()
 
 
         self.frame_1=QFrame()
         self.frame_1.setMinimumWidth(self.width())
         self.frame_1.setMaximumWidth(self.width())
-        self.frame_1.setMaximumHeight(self.width())
+        self.frame_1.setMinimumHeight(self.width())
         self.frame_1.setMaximumHeight(self.width())
 
         self.frame_1.setLayout(self.vertical_1)
@@ -85,8 +87,8 @@ class HomeScreen(QMainWindow):
 
         layout_horizontal.addWidget(menu_frame)
         layout_horizontal.addLayout(parent_vertical)
-        layout_horizontal.setContentsMargins(0,0,0,0)
-        parent_vertical.setContentsMargins(0,0,0,0)
+        layout_horizontal.setContentsMargins(100,0,100,0)
+        parent_vertical.setContentsMargins(100,0,100,0)
         parent_vertical.addStretch()
         #menu_vertical_layout.addStretch()
         layout_horizontal.addStretch()
@@ -99,23 +101,27 @@ class HomeScreen(QMainWindow):
 
         self.setCentralWidget(widget)
 
+        
+       
+
+
     def showHistory(self):
-        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:#1A3668;color:#fff;font-weight:bold;border:1px solid white")
+         self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+         self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+         self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+         self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:Orange;color:#fff;font-weight:bold;border:1px solid white")
 
 
-        self.frame_1.hide()
-        self.frame_2.hide()
-        self.frame_3.hide()
-        self.frame_4.show()
+         self.frame_1.hide()
+         self.frame_2.hide()
+         self.frame_3.hide()
+         self.frame_4.show()
 
     def showManage(self):
-        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:#1A3668;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:Orange;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
 
 
         self.frame_1.hide()
@@ -124,10 +130,10 @@ class HomeScreen(QMainWindow):
         self.frame_3.show()
 
     def showAdd(self):
-        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:#1A3668;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:orange;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
 
         self.frame_1.hide()
         self.frame_3.hide()
@@ -135,10 +141,10 @@ class HomeScreen(QMainWindow):
         self.frame_2.show()
 
     def showHome(self):
-        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:#1A3668;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
-        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:#A4866F;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:orange;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_manage.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
+        self.btn_history.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
 
         self.frame_2.hide()
         self.frame_3.hide()
@@ -173,7 +179,7 @@ class HomeScreen(QMainWindow):
         self.vertical_1.setContentsMargins(0,0,0,0)
         
         button=QPushButton("Refresh Slot")
-        button.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px;background:#696969;border:1px solid white")
+        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
         button.clicked.connect(self.refreshHome)
 
         vertical_layout=QVBoxLayout()
@@ -241,7 +247,7 @@ class HomeScreen(QMainWindow):
         vtype.addItem("4 Wheeler")
 
         button=QPushButton("Add Vehicle")
-        button.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px;background:green;border:1px solid white")
+        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
 
         layout.addWidget(name_label)
         layout.addWidget(name_input)
@@ -317,7 +323,7 @@ class HomeScreen(QMainWindow):
         frame=QFrame()
         layout=QVBoxLayout()
         button=QPushButton("Refresh")
-        button.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px;background:green;border:1px solid white")
+        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
         button.clicked.connect(self.refreshManage)
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
@@ -375,7 +381,7 @@ class HomeScreen(QMainWindow):
         self.table1.setColumnCount(7)
 
         button=QPushButton("Refresh")
-        button.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px;background:green;border:1px solid white")
+        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
         button.clicked.connect(self.refreshHistory)
 
 
@@ -422,3 +428,11 @@ class HomeScreen(QMainWindow):
             id =str(self.table.item(row,0).text())
             self.dbOperation.exitVehicle(id)
             self.table.removeRow(row)
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = HomeScreen
+    sys.exit(app.exec_())
+
+
+
+
