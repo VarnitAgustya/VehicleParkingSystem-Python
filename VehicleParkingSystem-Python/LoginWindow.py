@@ -2,10 +2,12 @@ from PyQt5.QtWidgets import QWidget,QVBoxLayout,QPushButton,QLabel,QLineEdit,QAp
 import sys
 from DataBaseOperation import DBOperation
 from HomeWindow import HomeScreen
+from PyQt5.QtGui import QIcon
 
 class LoginScreen(QWidget):
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QIcon("slash_img.jpg"))
         self.setWindowTitle("Login")
         self.setStyleSheet("background-color: Black")
         self.resize(600,300)

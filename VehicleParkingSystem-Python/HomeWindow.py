@@ -4,12 +4,13 @@ from PyQt5.QtWidgets import QWidget,QMainWindow,QPushButton,QLineEdit,QLabel,QVB
 from PyQt5.QtGui import QPalette, QBrush, QPixmap
 from DataBaseOperation import DBOperation
 from PyQt5.QtWidgets import QHeaderView,qApp
-import PyQt5.QtGui
+from PyQt5.QtGui import QIcon
 
 class HomeScreen(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Home")
+        self.setWindowIcon(QIcon("slash_img.jpg"))
         self.dbOperation=DBOperation()
         widget=QWidget()
         palette = QPalette()
@@ -19,12 +20,17 @@ class HomeScreen(QMainWindow):
         layout_horizontal=QVBoxLayout()
         menu_vertical_layout=QHBoxLayout()
 
+
         self.btn_home=QPushButton("Home")
         self.btn_add = QPushButton("Add Vehicle")
         self.btn_manage = QPushButton("Manage Vehicle")
         self.btn_history = QPushButton("History")
 
         menu_vertical_layout.setContentsMargins(0,0,0,0)
+        widget.setLayout(layout_horizontal)
+        self.setCentralWidget(widget)
+
+
         menu_vertical_layout.setSpacing(0)
         self.btn_home.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
         self.btn_add.setStyleSheet("width:200px;height:160px;font-size:20px;background:Dark Blue;color:#fff;font-weight:bold;border:1px solid white")
@@ -183,7 +189,7 @@ class HomeScreen(QMainWindow):
         self.vertical_1.setContentsMargins(0,0,0,0)
         
         button=QPushButton("Refresh Slot")
-        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
+        button.setStyleSheet("color:rgb(0, 128, 255);padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
         button.clicked.connect(self.refreshHome)
 
         vertical_layout=QVBoxLayout()
@@ -229,13 +235,13 @@ class HomeScreen(QMainWindow):
 
 
         name_label=QLabel("Name : ")
-        name_label.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px")
+        name_label.setStyleSheet("color:black;padding:8px 0px;font-size:20px")
         mobile_label=QLabel("Mobile : ")
-        mobile_label.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px")
+        mobile_label.setStyleSheet("color:black;padding:8px 0px;font-size:20px")
         vechicle_label=QLabel("Vehicle No : ")
-        vechicle_label.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px")
+        vechicle_label.setStyleSheet("color:black;padding:8px 0px;font-size:20px")
         vechicle_type=QLabel("Vehicle Type : ")
-        vechicle_type.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px")
+        vechicle_type.setStyleSheet("color:black;padding:8px 0px;font-size:20px")
         error_label=QLabel("")
         error_label.setStyleSheet("color:red;padding:8px 0px;font-size:20px")
 
@@ -251,7 +257,7 @@ class HomeScreen(QMainWindow):
         vtype.addItem("4 Wheeler")
 
         button=QPushButton("Add Vehicle")
-        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
+        button.setStyleSheet("color:gree;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
 
         layout.addWidget(name_label)
         layout.addWidget(name_input)
@@ -327,7 +333,7 @@ class HomeScreen(QMainWindow):
         frame=QFrame()
         layout=QVBoxLayout()
         button=QPushButton("Refresh")
-        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
+        button.setStyleSheet("color:rgb(0, 128, 255);padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
         button.clicked.connect(self.refreshManage)
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
@@ -385,7 +391,7 @@ class HomeScreen(QMainWindow):
         self.table1.setColumnCount(7)
 
         button=QPushButton("Refresh")
-        button.setStyleSheet("color:red;padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
+        button.setStyleSheet("color:rgb(0, 128, 255);padding:8px 0px;font-size:20px;background:cyan;border:1px solid white")
         button.clicked.connect(self.refreshHistory)
 
 

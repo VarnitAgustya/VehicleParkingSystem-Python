@@ -8,7 +8,7 @@ class DBOperation():
         file=open("./config.json","r")
         datadic=json.loads(file.read())
         file.close()
-        self.mydb=pymysql.connect(host="localhost",user="root",passwd="python",database="test")
+        self.mydb=pymysql.connect(host="localhost",user="root",passwd="Abhay7360",database="Abhay")
 
     def CreateTables(self):
         cursor=self.mydb.cursor()
