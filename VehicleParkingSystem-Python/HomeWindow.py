@@ -1,6 +1,7 @@
 
 import sys
 from PyQt5.QtWidgets import QWidget,QMainWindow,QPushButton,QLineEdit,QLabel,QVBoxLayout,QHBoxLayout,QFrame,QGridLayout,QComboBox,QTableWidget,QTableWidgetItem,QApplication
+from PyQt5.QtGui import QPalette, QBrush, QPixmap
 from DataBaseOperation import DBOperation
 from PyQt5.QtWidgets import QHeaderView,qApp
 import PyQt5.QtGui
@@ -11,7 +12,10 @@ class HomeScreen(QMainWindow):
         self.setWindowTitle("Home")
         self.dbOperation=DBOperation()
         widget=QWidget()
-        widget.setStyleSheet("background:black")
+        palette = QPalette()
+        palette.setBrush(QPalette.Background, QBrush(QPixmap("Background.jpg")))
+        widget.setPalette(palette)
+        widget.setAutoFillBackground(True)        
         layout_horizontal=QVBoxLayout()
         menu_vertical_layout=QHBoxLayout()
 
